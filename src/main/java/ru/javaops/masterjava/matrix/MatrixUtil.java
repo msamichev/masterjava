@@ -21,13 +21,17 @@ public class MatrixUtil {
         final int[][] matrixC = new int[matrixSize][matrixSize];
 
         List<Future<Pair<Integer, int[][]>>> futures = new ArrayList<>();
-        for (int i = 0, r = matrixSize; i < matrixSize; i += MainMatrix.THREAD_NUMBER, r -= MainMatrix.THREAD_NUMBER) {
-            final int idx = i;
+        //for (int i = 0, r = matrixSize; i < matrixSize; i += MainMatrix.THREAD_NUMBER, r -= MainMatrix.THREAD_NUMBER) {
+
+        int count = matrixSize/MainMatrix.THREAD_NUMBER;
+
+        for (int i = 0; i < MainMatrix.THREAD_NUMBER; i++) {
+            final int idx = i * count;
             final int[][] subMatrixB = matrixB;
-            final int[][] subMatrixA = new int[Math.min(MainMatrix.THREAD_NUMBER, r)][matrixSize];
+            final int[][] subMatrixA = new int[count][matrixSize];
 
             for (int j = 0; j < subMatrixA.length; j++) {
-                subMatrixA[j] = matrixA[i + j];
+                subMatrixA[j] = matrixA[idx + j];
             }
             futures.add(completionService.submit(() -> new Pair<>(idx, singleThreadMultiply(subMatrixA, subMatrixB))));
         }
