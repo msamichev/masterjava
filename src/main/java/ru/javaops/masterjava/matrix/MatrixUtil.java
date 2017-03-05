@@ -58,7 +58,7 @@ public class MatrixUtil {
         final int matrixBColumns = matrixB[0].length;
         final int[][] matrixC = new int[matrixARows][matrixBColumns];
 
-        int thatColumn[] = new int[matrixBRows];
+        int[] thatColumn = new int[matrixBRows];
 
         try {
             for (int j = 0; ; j++) {
@@ -67,7 +67,7 @@ public class MatrixUtil {
                 }
 
                 for (int i = 0; i < matrixARows; i++) {
-                    int thisRow[] = matrixA[i];
+                    int[] thisRow = matrixA[i];
                     int sum = 0;
                     for (int k = 0; k < matrixAColumns; k++) {
                         sum += thisRow[k] * thatColumn[k];
