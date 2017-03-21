@@ -7,15 +7,6 @@
 
 
     <servlet>
-        <servlet-name>upload-file</servlet-name>
-        <servlet-class>ru.javaops.masterjava.web.UploadFileServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>upload-file</servlet-name>
-        <url-pattern>/upload-file</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>upload</servlet-name>
         <jsp-file>/WEB-INF/upload.jsp</jsp-file>
     </servlet>
